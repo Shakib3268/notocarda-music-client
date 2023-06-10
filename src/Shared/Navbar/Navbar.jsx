@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../assets/cover.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
+import { FaUserCircle } from "react-icons/fa";
+import { Helmet } from 'react-helmet-async';
 
 const Navbar = () => {
+  const{user,logOut} = useContext(AuthContext)
+  const handleLogOut= () =>{
+    logOut()
+    .then()
+    .catch(error => {
+      console.log(error)
+    })
+  }
     const navOptions = <>
     <Link to='/'><li><a>Home</a></li></Link>
     <Link><li><a>Instructor</a></li></Link>
@@ -11,7 +22,10 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar fixed z-10 bg-opacity-40 bg-black text-white">
+          <Helmet>
+        <title>NotoCard || Home</title>
+      </Helmet>
+            <div className="navbar z-10 bg-opacity-40 bg-black text-white">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -29,7 +43,12 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+  {user ?.photoURL ? <img src={user.photoURL} className='rounded-full me-2'/> :
+      <p><FaUserCircle style={{fontSize:'1.5rem'}}></FaUserCircle></p>}
+          {user ?
+           <button onClick={handleLogOut} className="btn">LogOut</button>:
+           <Link to='login'><button className="btn">Login</button></Link>
+          }
   </div>
 </div>
         </div>
