@@ -7,6 +7,7 @@ import Login from "../Shared/Login/Login";
 import Signup from "../Shared/signup/Signup";
 import Dashboard from "../Layout/Dashboard";
 import Myclass from "../pages/Dashboard/MyClass/Myclass";
+import Manageduser from "../pages/Dashboard/managedUser/Manageduser";
 
  export const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ import Myclass from "../pages/Dashboard/MyClass/Myclass";
         {
           path:'myclass',
           element:<Myclass></Myclass>
+        },
+        {
+          path:'manageduser',
+          element:<Manageduser></Manageduser>
         }
       ]
     }
