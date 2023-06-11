@@ -7,12 +7,13 @@ import { AuthContext } from '../../provider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const [open,setOpen] = useState(false)
   const [disabled, setDisabled] = useState(true);
-  const { register, handleSubmit,formState: { errors } } = useForm();
-  const { signIn } = useContext(AuthContext)
+  const { register, handleSubmit} = useForm();
+  const {signIn } = useContext(AuthContext)
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -24,15 +25,21 @@ const Login = () => {
 
   const onSubmit = data =>{
      console.log(data);
-    //  signIn(email,password)
-    //  .then(result =>{
-    //   const loggedUser = result.user 
-    //   console.log(loggedUser)
-    //   navigate(from,{replace: true})
-    // })
-    // .catch(error => {
-    //       console.log(error.message)
-    //     })
+     signIn(email, password)
+     .then(result => {
+         const user = result.user;
+         console.log(user);
+         Swal.fire({
+             title: 'User Login Successful.',
+             showClass: {
+                 popup: 'animate__animated animate__fadeInDown'
+             },
+             hideClass: {
+                 popup: 'animate__animated animate__fadeOutUp'
+             }
+         });
+         navigate(from, { replace: true });
+     })
   }
   
 
@@ -40,22 +47,6 @@ const Login = () => {
     setOpen(!open)
   }
   
-    // const handleLogin = event =>{
-    //   event.preventDefault()
-    //   const form = event.target 
-    //   const email = form.email.value 
-    //   const password = form.password.value 
-    //   console.log(email,password)
-    //   signIn(email,password)
-    //   .then(result =>{
-    //     const loggedUser = result.user 
-    //     console.log(loggedUser)
-    //     navigate(from,{replace: true})
-    //   })
-    //   .catch(error => {
-    //     console.log(error.message)
-    //   })
-    // }
   
 
     const handleValidateCaptcha = (e) => {
@@ -85,7 +76,7 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="email" {...register("email")} className="input input-bordered" />
+                        <input type="email" name='email' placeholder="email" {...register("email")} className="input input-bordered" />
                     </div>
                     <div className="form-control">
                         <label className="label">
