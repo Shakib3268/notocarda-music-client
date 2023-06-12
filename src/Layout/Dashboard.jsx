@@ -31,7 +31,7 @@ const Dashboard = () => {
         </>
       }
        <div className="divider"></div>
-       <li><NavLink>Home</NavLink></li>
+       <li><NavLink to='/'>Home</NavLink></li>
        <li><NavLink>InsTructor</NavLink></li>
        <li><NavLink>Classes</NavLink></li>
     </ul>

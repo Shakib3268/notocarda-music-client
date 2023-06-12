@@ -15,10 +15,10 @@ const Navbar = () => {
     })
   }
     const navOptions = <>
-    <Link to='/'><li><a>Home</a></li></Link>
-    <Link><li><a>Instructor</a></li></Link>
-    <Link><li><a>Classes</a></li></Link>
-    <Link to='/dashboard/myclass'><li><a>Dashboard</a></li></Link>
+    <Link to='/'><li>Home</li></Link>
+    <Link><li>Instructor</li></Link>
+    <Link>Classes</Link>
+    <Link to='/dashboard/myclass'><li>Dashboard</li></Link>
     </>
     return (
         <div>
@@ -35,7 +35,7 @@ const Navbar = () => {
         {navOptions}
       </ul>
     </div>
-    <Link><img src={logo} className='w-[150px]' alt="" srcset="" /></Link>
+    <Link><img src={logo} className='w-[150px]'/></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

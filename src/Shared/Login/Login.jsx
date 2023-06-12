@@ -3,17 +3,17 @@ import { useEffect, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { AuthContext } from '../../provider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
   const [open,setOpen] = useState(false)
   const [disabled, setDisabled] = useState(true);
   const { register, handleSubmit} = useForm();
-  const {signIn } = useContext(AuthContext)
+ const {signIn} = useContext(AuthContext)
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -25,7 +25,7 @@ const Login = () => {
 
   const onSubmit = data =>{
      console.log(data);
-     signIn(email, password)
+     signIn(data.email,data.password)
      .then(result => {
          const user = result.user;
          console.log(user);
@@ -41,13 +41,10 @@ const Login = () => {
          navigate(from, { replace: true });
      })
   }
-  
-
+ 
   const toggle = () =>{
     setOpen(!open)
   }
-  
-  
 
     const handleValidateCaptcha = (e) => {
       const user_captcha_value = e.target.value;
@@ -68,7 +65,7 @@ const Login = () => {
       </Helmet>
         <div className="hero-content grid lg:grid-cols-2 gap-9">
             <div className="text-center">
-                <img src="https://i.ibb.co/xHzCjGR/access-control-system-abstract-concept-335657-3180.jpg" alt="" srcset="" />
+                <img src="https://i.ibb.co/xHzCjGR/access-control-system-abstract-concept-335657-3180.jpg"/>
             </div>
             <div className="card max-w-sm shadow-2xl bg-base-100">
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
