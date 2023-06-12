@@ -26,7 +26,7 @@ const Dashboard = () => {
         <li><NavLink>Managed Classes</NavLink></li>
       <li><NavLink to='/dashboard/manageduser'>Managed User</NavLink></li>
         </> : isInstructor? <>
-        <li><NavLink>Add a Class</NavLink></li>
+        <li><NavLink to='/dashboard/addclass'>Add a Class</NavLink></li>
       <li><NavLink>My Classes</NavLink></li>
         </> : <>
         <li><NavLink to='/dashboard/myclass'>My Selected Class</NavLink></li>
