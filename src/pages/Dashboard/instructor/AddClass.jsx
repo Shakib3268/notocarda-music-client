@@ -1,100 +1,100 @@
-import React from "react";
-import UseAuth from "../../../hooks/UseAuth";
-import { useForm } from "react-hook-form";
-import SectionTitle from "../../../Components/Sectiontitle/SectionTitle";
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import UseAuth from '../../../hooks/UseAuth';
+import UseAxiosSecure from '../../../hooks/UseAxiosSecure';
+import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
 
-const img_hosting_token = import.meta.env.Vite_Image_Upload_Token
+const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 const AddClass = () => {
-  const { user } = UseAuth();
-  const img_hosting_url =  `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    const formData = new FormData
-    formData.append('image',data.image[0])
-    fetch(img_hosting_url,{
-        method:'POST',
-        body: formData
-    })
-    .then(res => res.json())
-    .then(imageResponse => {
-        if(imageResponse.succes){
-            const imgURL = imageResponse.data.display_url
-            const{musicClass,instructorName,price,email,availableSeat} = data
-            const newitem = {musicClass,instructorName,price: parseFloat(price),email,availableSeat: parseFloat(availableSeat),image:imgURL}
-            console.log(newitem)
-        }
-    })
-  }
-  return (
-    <div className="mt-4">
-      <SectionTitle subHeading={"Add class"}></SectionTitle>
-      <div className="card card-body bg-base-300 text-center">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {errors.exampleRequired && <span>This field is required</span>}
-          <div className="gap-3">
-            <label className="label">
-              <span className="label-text font-bold">Music Class:</span>
-            </label>
-            <input
-              placeholder="Music-class"
-              type="text"
-              {...register("musicClass")}
-            />
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
-                <span className="label-text">Music Picture</span>
-              </label>
-              <input
-                type="file" {...register("image")}
-                className="file-input file-input-bordered w-full max-w-xs"
-              />
+    const { user } = UseAuth();
+    const [axiosSecure] = UseAxiosSecure();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+    const onSubmit = data => {
+        console.log(data);
+        const formData = new FormData();
+        formData.append('image', data.classimage[0])
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imageResponse => {
+                console.log(imageResponse);
+                if (imageResponse.success) {
+                    const imgURL = imageResponse.data.display_url;
+                    const { classname, instructoremail, instructorname, price, seats } = data;
+                    const newItem = { classname, instructoremail, instructorname, seats: parseInt(seats), price: parseFloat(price), image: imgURL, status: 'pending', enroll: 0,  userImage: user?.photURL}
+                    console.log(newItem);
+                    axiosSecure.post('/allclass', newItem)
+                        .then(data => {
+                            reset();
+                            if (data.data?.insertedId) {
+                                Swal.fire(
+                                    'Your Class add succesfull',
+                                    'success'
+                                )
+                            }
+                            console.log('after add a new data', data.data);
+                        })
+                }
+            })
+    }
+    return (
+        <div className='px-32'>
+        <Helmet>
+        <title>Melody Music/Dashbord/Instructor/addclass</title>
+        </Helmet>
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full  mt-24  shadow-xl mb-10 p-8 border border-purple-500 bg-white rounded-lg text-black">
+            <h3 className='text-[25px] text-center font-semibold mb-5 text-transparent bg-clip-text  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>Enter the class information here</h3>
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text">Class Name</span>
+                </label>
+                <input type="text" {...register("classname", { required: true })} placeholder="type here" className="input input-bordered" />
+                {errors.classname && <span className='text-purple-600 animate-pulse'>Class Name is required</span>}
             </div>
-            <label className="label">
-              <span className="label-text font-bold">Instructor Name:</span>
-            </label>
-            <input
-              value={user?.displayName}
-              type="text"
-              placeholder="Instructor-Name"
-              {...register("instructorName")}
-            />
-          </div>
-          <div className="gap-3 mt-3">
-            <label className="label">
-              <span className="label-text font-bold">Price:</span>
-            </label>
-            <input placeholder="Price" {...register("price")} />
-          </div>
-          <div className="gap-3 mt-3">
-            <label className="label">
-              <span className="label-text font-bold">Instructor Email:</span>
-            </label>
-            <input
-              value={user?.email}
-              type="email"
-              placeholder="Seller Email"
-              {...register("email")}
-            />
-          </div>
-          <div className="gap-3 mt-3">
-            <label className="label">
-              <span className="label-text font-bold">Available Seats:</span>
-            </label>
-            <input
-              placeholder="Available-Seat"
-              {...register("availableSeat")}
-            />
-          </div>
-          <input className="mt-4 btn" type="submit" value="Add Class" />
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text">Class Image</span>
+                </label>
+                <input type="file" {...register("classimage", { required: true })} className="file-input file-input-bordered file-input-primary w-full" />
+                {errors.classimage && <span className='text-purple-600 animate-pulse'>Class Image is required</span>}
+            </div>
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text">Instructor name</span>
+                </label>
+                <input type="text" defaultValue={user?.displayName} {...register("instructorname", { required: true })} readOnly className="input input-bordered" />
+            </div>
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text">Instructor Email</span>
+                </label>
+                <input type="email" defaultValue={user?.email} {...register("instructoremail", { required: true })} readOnly className="input input-bordered" />
+            </div>
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text">Available seats</span>
+                </label>
+                <input type="text" {...register("seats", { required: true })} placeholder="type here" className="input input-bordered" />
+                {errors.seats && <span className='text-purple-600 animate-pulse'>Available Seats is required</span>}
+            </div>
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text">Price</span>
+                </label>
+                <input type="text" {...register("price", { required: true })} placeholder="type here" className="input input-bordered" />
+                {errors.price && <span className='text-purple-600 animate-pulse'>Price is required</span>}
+            </div>
+            <div className="form-control mt-6">
+                <input type="submit" value="Add Class" className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 border-0 text-white" />
+            </div>
         </form>
-      </div>
+
     </div>
-  );
+    )
 };
 
 export default AddClass;
