@@ -23,7 +23,7 @@ const Dashboard = () => {
       {/* Sidebar content here */}
       {
         isAdmin? <>
-        <li><NavLink>Managed Classes</NavLink></li>
+        <li><NavLink to='/dashboard/managedclass'>Managed Classes</NavLink></li>
       <li><NavLink to='/dashboard/manageduser'>Managed User</NavLink></li>
         </> : isInstructor? <>
         <li><NavLink to='/dashboard/addclass'>Add a Class</NavLink></li>
