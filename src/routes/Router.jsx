@@ -10,6 +10,7 @@ import Myclass from "../pages/Dashboard/MyClass/Myclass";
 import Manageduser from "../pages/Dashboard/managedUser/Manageduser";
 import AddClass from "../pages/Dashboard/instructor/AddClass";
 import ManagedClasses from "../pages/Dashboard/managedUser/ManagedClasses";
+import Classes from "../pages/Home/Classes/Classes";
 
  export const router = createBrowserRouter([
     {
@@ -27,6 +28,11 @@ import ManagedClasses from "../pages/Dashboard/managedUser/ManagedClasses";
         {
             path:'signup',
             element:<Signup></Signup>
+        },
+        {
+          path:'classes',
+          element:<Classes></Classes>,
+          loader: () => fetch('http://localhost:5000/allclasses')
         }
       ]
     },

@@ -19,7 +19,7 @@ const Dashboard = () => {
   </div> 
   <div className="drawer-side bg-[#0C4B65]">
     <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
-    <ul className="menu p-4 w-80 h-full bg-[#0C4B65] text-base-content">
+    <ul className="menu p-4 w-80 h-full bg-[#248ab6] text-base-content">
       {/* Sidebar content here */}
       {
         isAdmin? <>
@@ -37,7 +37,7 @@ const Dashboard = () => {
        <div className="divider"></div>
        <li><NavLink to='/'>Home</NavLink></li>
        <li><NavLink>InsTructor</NavLink></li>
-       <li><NavLink>Classes</NavLink></li>
+       <li><NavLink to='/classes'>Classes</NavLink></li>
     </ul>
   
   </div>
