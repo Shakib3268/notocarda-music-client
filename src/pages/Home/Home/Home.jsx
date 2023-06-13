@@ -4,6 +4,7 @@ import PopularClass from '../../MostClass/PopularClass';
 import UseAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import SectionTitle from '../../../Components/Sectiontitle/SectionTitle';
+import PopularInstructor from '../PopularInstructor/PopularInstructor';
 
 const Home = () => {
     const [axiosSecure] = UseAxiosSecure();
@@ -25,6 +26,7 @@ const Home = () => {
                     }
                 </div>
             </div>
+            <PopularInstructor></PopularInstructor>
         </div>
     );
 };

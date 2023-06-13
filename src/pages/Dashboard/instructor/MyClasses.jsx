@@ -42,7 +42,7 @@ const MyClasses = () => {
   return (
     <div className="mt-16">
       <Helmet>
-        <title>Melody Music/Dashbord/myclases</title>
+        <title>NotoCorda Music/Dashbord/myclases</title>
       </Helmet>
       <h1 className="text-center text-3xl mt-8 mb-16">
         Your All Add Classes Here

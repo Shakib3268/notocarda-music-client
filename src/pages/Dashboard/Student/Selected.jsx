@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UseSelected from '../../../hooks/UseSelected';
+import { FaRegTrashAlt } from 'react-icons/fa';
 
 const Selected = () => {
     const [selectclass, refetch] = UseSelected();
@@ -18,7 +19,7 @@ const Selected = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed){
-                fetch(`https://music-insuruments-learn-scholl.vercel.app/selectclass/${id}`,{
+                fetch(`http://localhost:5000/selectclass/${id}`,{
                     method: 'DELETE',
                 })
                     .then(res => res.json())

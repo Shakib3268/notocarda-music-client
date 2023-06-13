@@ -7,6 +7,7 @@ import UseAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useInstructor from '../../../hooks/useInstructor';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const Classes = () => {
     const [disabled, setDisabled] = useState(false);

@@ -43,7 +43,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-  {user ?.photoURL ? <img src={user.photoURL} className='rounded-full me-2'/> :
+  {user ?.photoURL ? <img src={user.photoURL} className='rounded-full me-2 w-[50px] h-[50px]'/> :
       <p><FaUserCircle style={{fontSize:'1.5rem'}}></FaUserCircle></p>}
           {user ?
            <button onClick={handleLogOut} className="btn">LogOut</button>:
