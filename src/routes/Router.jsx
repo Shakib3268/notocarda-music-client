@@ -6,11 +6,15 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../Shared/Login/Login";
 import Signup from "../Shared/signup/Signup";
 import Dashboard from "../Layout/Dashboard";
-import Myclass from "../pages/Dashboard/MyClass/Myclass";
 import Manageduser from "../pages/Dashboard/managedUser/Manageduser";
 import AddClass from "../pages/Dashboard/instructor/AddClass";
 import ManagedClasses from "../pages/Dashboard/managedUser/ManagedClasses";
 import Classes from "../pages/Home/Classes/Classes";
+import MyClasses from "../pages/Dashboard/instructor/MyClasses";
+import UpdateClass from "../pages/Dashboard/instructor/UpdateClass";
+import Selected from "../pages/Dashboard/Student/Selected";
+import EnrooledClasses from "../pages/Dashboard/Student/EnrooledClasses";
+import Instructor from "../pages/Home/Instructor/Instructor";
 
  export const router = createBrowserRouter([
     {
@@ -31,8 +35,11 @@ import Classes from "../pages/Home/Classes/Classes";
         },
         {
           path:'classes',
-          element:<Classes></Classes>,
-          loader: () => fetch('http://localhost:5000/allclasses')
+          element:<Classes></Classes>
+        },
+        {
+          path:'instructor',
+          element:<Instructor></Instructor>
         }
       ]
     },
@@ -41,20 +48,32 @@ import Classes from "../pages/Home/Classes/Classes";
       element:<Dashboard></Dashboard>,
       children:[
         {
-          path:'myclass',
-          element:<Myclass></Myclass>
+          path:'selectclass',
+          element:<Selected></Selected>
         },
         {
-          path:'manageduser',
-          element:<Manageduser></Manageduser>
+          path:'updateclass/:id',
+          element:<UpdateClass></UpdateClass>
         },
         {
           path:'addclass',
           element:<AddClass></AddClass>
         },
         {
+          path: 'myclasses',
+          element:<MyClasses></MyClasses>
+        },
+        {
+          path:'manageduser',
+          element:<Manageduser></Manageduser>
+        },
+        {
           path:'managedclass',
           element:<ManagedClasses></ManagedClasses>
+        },
+        {
+          path:'enroledclass',
+          element:<EnrooledClasses></EnrooledClasses>
         }
       ]
     }
