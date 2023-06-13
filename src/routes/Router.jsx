@@ -15,6 +15,8 @@ import UpdateClass from "../pages/Dashboard/instructor/UpdateClass";
 import Selected from "../pages/Dashboard/Student/Selected";
 import EnrooledClasses from "../pages/Dashboard/Student/EnrooledClasses";
 import Instructor from "../pages/Home/Instructor/Instructor";
+import InstructorEnrolledClass from "../pages/Dashboard/instructor/InstructorEnrollClass/InstructorEnrolledClass";
+import Allpayment from "../pages/Dashboard/managedUser/Allpayment";
 
  export const router = createBrowserRouter([
     {
@@ -64,6 +66,10 @@ import Instructor from "../pages/Home/Instructor/Instructor";
           element:<MyClasses></MyClasses>
         },
         {
+          path:'instructorEnrool',
+          element:<InstructorEnrolledClass></InstructorEnrolledClass>
+        },
+        {
           path:'manageduser',
           element:<Manageduser></Manageduser>
         },
@@ -74,6 +80,10 @@ import Instructor from "../pages/Home/Instructor/Instructor";
         {
           path:'enroledclass',
           element:<EnrooledClasses></EnrooledClasses>
+        },
+        {
+          path:'allPaymentmanage',
+          element:<Allpayment></Allpayment>
         }
       ]
     }

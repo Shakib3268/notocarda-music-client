@@ -25,13 +25,14 @@ const Dashboard = () => {
         isAdmin? <>
         <li><NavLink to='/dashboard/managedclass'>Managed Classes</NavLink></li>
       <li><NavLink to='/dashboard/manageduser'>Managed User</NavLink></li>
+      <li><Link to='/dashboard/allPaymentmanage'>Manage Payments</Link></li>
         </> : isInstructor? <>
         <li><NavLink to='/dashboard/addclass'>Add a Class</NavLink></li>
       <li><NavLink to='/dashboard/myclasses'>My Classes</NavLink></li>
+      <li><Link to='/dashboard/instructorEnrool'>Enrolled Classes</Link></li>
         </> : <>
         <li><NavLink to='/dashboard/selectclass'>My Selected Class</NavLink></li>
       <li><NavLink to='/dashboard/enroledclass'>My Enrolled Class</NavLink></li>
-      <li><NavLink>Payment</NavLink></li>
         </>
       }
        <div className="divider"></div>

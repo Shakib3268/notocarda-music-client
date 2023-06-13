@@ -1,0 +1,50 @@
+import React from 'react';
+import UseAuth from '../../../../hooks/UseAuth';
+import UseAxiosSecure from '../../../../hooks/UseAxiosSecure';
+
+const InstructorEnrolledClass = () => {
+    
+    const { user } = UseAuth()
+    const [axiosSecure] = UseAxiosSecure();
+    const { data: enrol = [], refetch } = useQuery(['enrol'], async () => {
+        const res = await axiosSecure.get(`/enroledclases/${user?.email}`)
+        return res.data;
+    });
+    return (
+        <div className='px-10 mt-24 mb-24'>
+        <Helmet>
+            <title>NotoCard Music/dashbord/myenroolclasses</title>
+        </Helmet>
+         <h1 className='text-center text-3xl mt-8 mb-16'>Your All Enroll Classes Here<span className='text-purple-500'>({enrol?.length})</span></h1>
+         <div className="overflow-x-auto">
+            <table className="table table-zebra w-full">
+                <thead>
+                    <tr className='text-transparent bg-clip-text  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  text-sm'>
+                        <th>Sl</th>
+                        <th>image</th>
+                        <th>class Name</th>
+                        <th>price</th>
+                        <th>StudentNmae</th>
+                        <th>StudentEmail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                       enrol?.map((singlenroll, index) => <tr key={singlenroll._id}>
+                            <td>{index + 1}</td>
+                            <td><img className='w-10 rounded' src={singlenroll?.image} alt="class" /> </td>
+                            <td>{singlenroll?.classname}</td>
+                            <td>{singlenroll?.price}</td>   
+                            <td>{singlenroll?.studentName}</td>                
+                            <td>{singlenroll?.email}</td>
+                        </tr>)
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    );
+};
+
+export default InstructorEnrolledClass;
