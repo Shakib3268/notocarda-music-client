@@ -1,21 +1,21 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../provider/AuthProvider';
+import useInstructor from '../hooks/useInstructor';
 import { useLocation } from 'react-router-dom';
-import useAdmin from '../hooks/useAdmin';
+import { AuthContext } from '../provider/AuthProvider';
 
-const AdminRoute = ({children}) => {
+const InstructorRoute = ({children}) => {
     const {user,loading} = useContext(AuthContext)
-    const [isAdmin,isAdminLoading] = useAdmin()
+    const [isInstructor,isInstructorLoading] = useInstructor()
     const location = useLocation()
-    if(loading || isAdminLoading){
+    if(loading || isInstructorLoading){
         return <div className="spinner-blue text-center">
             <button className="btn loading">loading</button>
         </div>
     }
-    if(user && isAdmin){
+    if(user && isInstructor){
         return children
     }
     return <Navigate state={{from:location}} to= '/'></Navigate>
 };
 
-export default AdminRoute;
+export default InstructorRoute;
