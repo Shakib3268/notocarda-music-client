@@ -19,6 +19,7 @@ import InstructorEnrolledClass from "../pages/Dashboard/instructor/InstructorEnr
 import Allpayment from "../pages/Dashboard/managedUser/Allpayment";
 import Payment from "../pages/Dashboard/paymentclasses/Payment";
 import Error from "../ErrorPage/Error";
+import PrivateRoute from "./PrivateRoute";
 
  export const router = createBrowserRouter([
     {
@@ -49,7 +50,7 @@ import Error from "../ErrorPage/Error";
     },
     {
       path:'dashboard',
-      element:<Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
         {
           path:'selectclass',
