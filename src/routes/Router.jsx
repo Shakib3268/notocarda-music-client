@@ -20,6 +20,8 @@ import Allpayment from "../pages/Dashboard/managedUser/Allpayment";
 import Payment from "../pages/Dashboard/paymentclasses/Payment";
 import Error from "../ErrorPage/Error";
 import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 
  export const router = createBrowserRouter([
     {
@@ -62,23 +64,23 @@ import PrivateRoute from "./PrivateRoute";
         },
         {
           path:'addclass',
-          element:<AddClass></AddClass>
+          element:<InstructorRoute><AddClass></AddClass></InstructorRoute>
         },
         {
           path: 'myclasses',
-          element:<MyClasses></MyClasses>
+          element:<InstructorRoute><MyClasses></MyClasses></InstructorRoute>
         },
         {
           path:'instructorEnrool',
-          element:<InstructorEnrolledClass></InstructorEnrolledClass>
+          element:<InstructorRoute><InstructorEnrolledClass></InstructorEnrolledClass></InstructorRoute>
         },
         {
           path:'manageduser',
-          element:<Manageduser></Manageduser>
+          element:<AdminRoute><Manageduser></Manageduser></AdminRoute>
         },
         {
           path:'managedclass',
-          element:<ManagedClasses></ManagedClasses>
+          element:<AdminRoute><ManagedClasses></ManagedClasses></AdminRoute>
         },
         {
           path:'enroledclass',
@@ -86,7 +88,7 @@ import PrivateRoute from "./PrivateRoute";
         },
         {
           path:'allPaymentmanage',
-          element:<Allpayment></Allpayment>
+          element:<AdminRoute><Allpayment></Allpayment></AdminRoute>
         },
         {
           path:'payment/:id',
