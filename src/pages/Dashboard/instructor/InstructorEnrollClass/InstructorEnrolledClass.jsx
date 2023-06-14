@@ -1,6 +1,8 @@
 import React from 'react';
 import UseAuth from '../../../../hooks/UseAuth';
 import UseAxiosSecure from '../../../../hooks/UseAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const InstructorEnrolledClass = () => {
     

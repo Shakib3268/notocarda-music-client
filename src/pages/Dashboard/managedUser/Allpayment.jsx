@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
 import UseAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { FaTrashAlt } from 'react-icons/fa';
 
 const Allpayment = () => {
     const [axiosSecure] = UseAxiosSecure();
