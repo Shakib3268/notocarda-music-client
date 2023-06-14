@@ -64,23 +64,23 @@ import InstructorRoute from "./InstructorRoute";
         },
         {
           path:'addclass',
-          element:<InstructorRoute><AddClass></AddClass></InstructorRoute>
+          element:<><AddClass></AddClass></>
         },
         {
           path: 'myclasses',
-          element:<InstructorRoute><MyClasses></MyClasses></InstructorRoute>
+          element:<><MyClasses></MyClasses></>
         },
         {
           path:'instructorEnrool',
-          element:<InstructorRoute><InstructorEnrolledClass></InstructorEnrolledClass></InstructorRoute>
+          element:<InstructorEnrolledClass></InstructorEnrolledClass>
         },
         {
           path:'manageduser',
-          element:<AdminRoute><Manageduser></Manageduser></AdminRoute>
+          element: <Manageduser></Manageduser>
         },
         {
           path:'managedclass',
-          element:<AdminRoute><ManagedClasses></ManagedClasses></AdminRoute>
+          element:<><ManagedClasses></ManagedClasses></>
         },
         {
           path:'enroledclass',
