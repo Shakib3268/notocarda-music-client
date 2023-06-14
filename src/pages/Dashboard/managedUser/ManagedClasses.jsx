@@ -12,7 +12,7 @@ const ManagedClasses = () => {
         return res.data;
     })
     const handleAprovedClass = (id) => {
-        fetch(`http://localhost:5000/allclass/aproved/${id}`, {
+        fetch(`https://notocard-music-server.vercel.app/allclass/aproved/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -41,7 +41,7 @@ const ManagedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/allclass/${id}`, {
+                fetch(`https://notocard-music-server.vercel.app/allclass/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())

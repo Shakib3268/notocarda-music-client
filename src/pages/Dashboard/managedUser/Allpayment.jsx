@@ -22,7 +22,7 @@ const Allpayment = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/paymentdelet/${singlePayment?._id}`,{
+                fetch(`https://notocard-music-server.vercel.app/paymentdelet/${singlePayment?._id}`,{
                     method: 'DELETE',
                 })
                 .then(res => res.json())

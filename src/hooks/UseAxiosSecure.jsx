@@ -5,7 +5,7 @@ import UseAuth from './UseAuth';
 
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000', 
+    baseURL: 'https://notocard-music-server.vercel.app', 
   });
 const UseAxiosSecure = () => {
     const { logOut } = UseAuth(); 

@@ -29,7 +29,7 @@ const Classes = () => {
         const { classname, image, instructoremail, instructorname, price, seats, _id, enroll } = selectedClass || {};
         if (user && user?.email) {
             const selectClass = { classname, image, instructoremail, email: user?.email, instructorname, price, seats, classid: _id, enroll, status: 'selected' };
-            fetch('http://localhost:5000/selectclass', {
+            fetch('https://notocard-music-server.vercel.app/selectclass', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

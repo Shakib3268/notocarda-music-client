@@ -19,7 +19,7 @@ const Selected = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed){
-                fetch(`http://localhost:5000/selectclass/${id}`,{
+                fetch(`https://notocard-music-server.vercel.app/selectclass/${id}`,{
                     method: 'DELETE',
                 })
                     .then(res => res.json())
