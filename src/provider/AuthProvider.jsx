@@ -4,7 +4,7 @@ import { createContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { app } from '../firebase/firebase.config';
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 
 
 

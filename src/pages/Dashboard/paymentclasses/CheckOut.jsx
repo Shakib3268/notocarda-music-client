@@ -99,7 +99,7 @@ const CheckOut = ({ enrolclass}) => {
     }
     return (
         <div>
-        <form className="w-2/3 m-8" onSubmit={handleSubmit}>
+        <form className="w-[500px]" onSubmit={handleSubmit}>
             <CardElement
                 options={{
                     style: {

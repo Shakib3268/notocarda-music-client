@@ -17,6 +17,7 @@ import EnrooledClasses from "../pages/Dashboard/Student/EnrooledClasses";
 import Instructor from "../pages/Home/Instructor/Instructor";
 import InstructorEnrolledClass from "../pages/Dashboard/instructor/InstructorEnrollClass/InstructorEnrolledClass";
 import Allpayment from "../pages/Dashboard/managedUser/Allpayment";
+import Payment from "../pages/Dashboard/paymentclasses/Payment";
 
  export const router = createBrowserRouter([
     {
@@ -84,6 +85,10 @@ import Allpayment from "../pages/Dashboard/managedUser/Allpayment";
         {
           path:'allPaymentmanage',
           element:<Allpayment></Allpayment>
+        },
+        {
+          path:'payment/:id',
+          element:<Payment></Payment>
         }
       ]
     }
