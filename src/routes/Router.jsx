@@ -22,6 +22,7 @@ import Error from "../ErrorPage/Error";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import StudentPrivate from "./StudentPrivate";
 
  export const router = createBrowserRouter([
     {
@@ -51,12 +52,12 @@ import InstructorRoute from "./InstructorRoute";
       ]
     },
     {
-      path:'dashboard',
+      path:'/dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
         {
           path:'selectclass',
-          element:<Selected></Selected>
+          element:<StudentPrivate><Selected></Selected></StudentPrivate>
         },
         {
           path:'updateclass/:id',
@@ -64,11 +65,11 @@ import InstructorRoute from "./InstructorRoute";
         },
         {
           path:'addclass',
-          element:<><AddClass></AddClass></>
+          element:<InstructorRoute><AddClass></AddClass></InstructorRoute>
         },
         {
           path: 'myclasses',
-          element:<><MyClasses></MyClasses></>
+          element:<InstructorRoute><MyClasses></MyClasses></InstructorRoute>
         },
         {
           path:'instructorEnrool',
@@ -76,15 +77,15 @@ import InstructorRoute from "./InstructorRoute";
         },
         {
           path:'manageduser',
-          element: <Manageduser></Manageduser>
+          element: <AdminRoute><Manageduser></Manageduser></AdminRoute>
         },
         {
           path:'managedclass',
-          element:<><ManagedClasses></ManagedClasses></>
+          element:<AdminRoute><ManagedClasses></ManagedClasses></AdminRoute>
         },
         {
           path:'enroledclass',
-          element:<EnrooledClasses></EnrooledClasses>
+          element:<StudentPrivate><EnrooledClasses></EnrooledClasses></StudentPrivate>
         },
         {
           path:'allPaymentmanage',
