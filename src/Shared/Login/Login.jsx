@@ -63,7 +63,7 @@ const Login = () => {
         <title>NotoCard || Login</title>
       </Helmet>
       <div className="my-8 mx-20">
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid lg:grid-cols-2 gap-8">
             <img src="https://i.ibb.co/xHzCjGR/access-control-system-abstract-concept-335657-3180.jpg"/>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">

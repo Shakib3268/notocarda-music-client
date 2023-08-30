@@ -111,9 +111,6 @@ const Signup = () => {
                         required: 'confirm password is required',validate: (value) => value === password || 'password not match'
                     })} placeholder="confirm password" className="input input-bordered" />
                     {errors.confirmPassword?.type === 'required' && <p className="text-red-600">{errors.confirmPassword.message}</p>}
-                    <label className="label">
-                        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                    </label>
                 </div>
                 <div className="form-control mt-6">
                     <input className="btn btn-primary" type="submit" value="Sign Up" />
