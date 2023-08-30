@@ -12,6 +12,8 @@ import Services from './Services';
 import Gallery from './Gallery';
 import Why from './Why';
 import TotalCount from './TotalCount';
+import Events from './Events';
+import Subscribe from './Subscribe';
 
 const Home = () => {
     const [axiosSecure] = UseAxiosSecure();
@@ -23,6 +25,7 @@ const Home = () => {
         <div>
             <MarqueeText></MarqueeText>
             <Banner></Banner>
+            <div className='max-w-7xl mx-auto'>
             <Welcome></Welcome>
             <PrincipalsTalk></PrincipalsTalk>
             <div className='lg:px-8 px-1 mt-8'>
@@ -39,8 +42,13 @@ const Home = () => {
             <PopularInstructor></PopularInstructor>
             <Gallery></Gallery>
             <Services></Services>
+            </div>
             <Why></Why>
+            <div className='max-w-7xl mx-auto'>
             <TotalCount></TotalCount>
+            <Events></Events>
+            <Subscribe></Subscribe>
+            </div>
         </div>
     );
 };
