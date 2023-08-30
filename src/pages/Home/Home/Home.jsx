@@ -8,6 +8,10 @@ import PopularInstructor from '../PopularInstructor/PopularInstructor';
 import MarqueeText from '../../../Shared/MarqueeText/MarqueeText';
 import Welcome from '../welcome/Welcome';
 import PrincipalsTalk from './PrincipalsTalk';
+import Services from './Services';
+import Gallery from './Gallery';
+import Why from './Why';
+import TotalCount from './TotalCount';
 
 const Home = () => {
     const [axiosSecure] = UseAxiosSecure();
@@ -33,6 +37,10 @@ const Home = () => {
                 </div>
             </div>
             <PopularInstructor></PopularInstructor>
+            <Gallery></Gallery>
+            <Services></Services>
+            <Why></Why>
+            <TotalCount></TotalCount>
         </div>
     );
 };
