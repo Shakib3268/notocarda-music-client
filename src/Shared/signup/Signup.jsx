@@ -34,13 +34,13 @@ const Signup = () => {
                                 if (data.insertedId) {
                                     reset();
                                     Swal.fire({
-                                        position: 'top-end',
+                                        position: 'center',
                                         icon: 'success',
-                                        title: 'User created successfully.',
+                                        title: 'Successfully Regestration Done!!',
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-                                    navigate('/');
+                                    navigate('/login');
                                 }
                             })
 
@@ -57,12 +57,12 @@ const Signup = () => {
       <Helmet>
         <title>NotoCard || SignUp</title>
       </Helmet>
-    <div className="hero-content grid lg:grid-cols-2">
+    <div className="hero-content grid lg:grid-cols-2 gap-6">
         <div className="text-center lg:text-left">
             <img src="https://i.ibb.co/6gNdRG6/account-concept-illustration-114360-399.jpg" alt="" srcset="" />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body m-0">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Name</span>
@@ -120,7 +120,9 @@ const Signup = () => {
                 </div>
             </form>
             <p className='text-center'><small>Already have an account <Link to="/login" className='text-blue-600'>Login</Link></small></p>
+            <div className='mx-auto mb-5'>
             <SocialLogin></SocialLogin>
+            </div>
         </div>
     </div>
 </div>

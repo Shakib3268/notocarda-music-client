@@ -33,13 +33,9 @@ const SocialLogin = () => {
 
 
     return (
-        <div>
-              <div className="divider"></div>
-            <div className="w-full text-center my-4">
-                <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline">
-                    <FaGoogle></FaGoogle>
-                </button>
-            </div>
+        <div className="mx-auto">
+            <div className="divider">Or</div>
+            <button onClick={handleGoogleSignIn} className=" btn w-[296px]  bg-[#1ed8f0] hover:bg-[#1bc2d8]"><img className="w-7" src='https://rhythm-fusion-client.web.app/assets/ggg-825b3245.png' alt="" /> Google</button>
         </div>
     );
 };
